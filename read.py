@@ -33,4 +33,3 @@ def search_number(video, name="test"):
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
     cap.release()
     cv2.destroyAllWindows()
-    
