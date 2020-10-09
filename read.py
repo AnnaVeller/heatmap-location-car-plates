@@ -1,12 +1,12 @@
 import cv2
-import model
+import load_model
 import numpy as np
 
 import logging
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
 
-PATH = "/home/user/repos/detect-license-plates-python/video/"
+PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 # PATH = "C:/Users/Anna/Documents/sirius/"
 
 
