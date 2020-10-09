@@ -24,7 +24,7 @@ def search_number(video, name="test"):
     while ret:
         ret, frame = cap.read()
         if ret:
-            state, cords = model.detect_number(frame)
+            state, cords = load_model.detect_number(frame)
             if state:
                 for c in cords:
                     logging.info(c)
