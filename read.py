@@ -42,7 +42,7 @@ def search_number(video, name="test"):
                     pts = np.array(c, np.int32)
                     pts = pts.reshape((-1, 1, 2))
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
-                    cv2.circle(frame, (x_mean, y_mean), 3, (0,0,255), thickness=1, lineType=8, shift=0)
+                    frame = cv2.circle(frame, (x_mean, y_mean), 3, (0,0,255), thickness=1)
             out.write(frame)
     cap.release()
     cv2.destroyAllWindows()
