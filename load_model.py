@@ -4,12 +4,14 @@ from NomeroffNet import filters, RectDetector, TextDetector, OptionsDetector,  D
     textPostprocessing, textPostprocessingAsync
 
 import logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
+logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
+log = logging.getLogger('Heatmap')
+log.setLevel(logging.DEBUG)
 
 NOMEROFF_NET_DIR = os.path.abspath('../')
 MASK_RCNN_DIR = os.path.join(NOMEROFF_NET_DIR, 'Mask_RCNN')
 MASK_RCNN_LOG_DIR = os.path.join(NOMEROFF_NET_DIR, 'logs')
-logging.debug(" Путь к Mask_RCNN"+MASK_RCNN_DIR )
+log.debug(" Путь к Mask_RCNN " + MASK_RCNN_DIR)
 sys.path.append(NOMEROFF_NET_DIR)
 
 nnet = Detector(MASK_RCNN_DIR, MASK_RCNN_LOG_DIR)

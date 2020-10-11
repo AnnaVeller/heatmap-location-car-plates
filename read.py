@@ -5,7 +5,9 @@ import matplotlib.pyplot as plt
 
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
+logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
+log = logging.getLogger('Heatmap')
+log.setLevel(logging.DEBUG)
 
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 # PATH = "C:/Users/Anna/Documents/sirius/"
@@ -14,7 +16,7 @@ PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 def search_number(video, name="test"):
     cap = cv2.VideoCapture(video)
     if not cap.isOpened():
-        logging.debug("Unable to read video")
+        log.debug("Unable to read video")
         ret = False
     else:
         #h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -31,9 +33,9 @@ def search_number(video, name="test"):
             cadr += 1
             state, cords = load_model.detect_number(frame)
             if state:
-                logging.debug('Нашли номер на %d кадре' %cadr)
+                log.debug('Нашли номер на %d кадре' %cadr)
                 for c in cords:
-                    logging.info('Координаты' + str(c[0]))
+                    log.info('Координаты' + str(c[0]))
                     x1 = c[0][0]
                     x2 = c[1][0]
                     x3 = c[2][0]
@@ -44,7 +46,7 @@ def search_number(video, name="test"):
                     y4 = c[3][1]
                     x_mean = (x1+x2+x3+x4)/4
                     y_mean = (y1+y2+y3+y4)/4
-                    logging.info('Координаты середины номера %f %f' % (x_mean, y_mean))
+                    log.info('Координаты середины номера %f %f' % (x_mean, y_mean))
                     x.append(x_mean)
                     y.append(y_mean)
                     plt.hist2d(x, y, bins=32)
