@@ -22,18 +22,19 @@ def search_number(video, name="test"):
         h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         range = ((0, w), (0, h))
+        log.debug('Видео [%dx%d]' % (w, h))
         #fps = int(cap.get(cv2.CAP_PROP_FPS))
         #out = cv2.VideoWriter(PATH + name + "_detect.mp4", cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), fps, (w, h))
         ret = True
     x = []
     y = []
+    cadr = 0
     while ret:
         ret, frame = cap.read()
-        cadr = 0
+        cadr += 1
         if ret:
             state, cords = load_model.detect_number(frame)
             if state:
-                cadr += 1
                 log.debug('Нашли номер на %d кадре' %cadr)
                 for c in cords:
                     log.info('Координаты' + str(c[0]))
