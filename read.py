@@ -34,7 +34,7 @@ def search_number(video, name="test"):
         cadr += 1
         if ret:
             length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
-            logging.debug(" Прошло: %f sec" % length)
+            log.debug(" Прошло: %f sec" % length)
             state, cords = load_model.detect_number(frame)
             if state:
                 log.debug('Нашли номер на %d кадре' %cadr)
