@@ -31,9 +31,9 @@ def search_number(video, name="test"):
         ret, frame = cap.read()
         cadr = 0
         if ret:
-            cadr += 1
             state, cords = load_model.detect_number(frame)
             if state:
+                cadr += 1
                 log.debug('Нашли номер на %d кадре' %cadr)
                 for c in cords:
                     log.info('Координаты' + str(c[0]))
