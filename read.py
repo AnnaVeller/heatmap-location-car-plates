@@ -51,7 +51,7 @@ def search_number(video, name="test"):
                     log.info('Координаты середины номера %f %f' % (x_mean, y_mean))
                     x.append(x_mean)
                     y.append(h-y_mean)
-                    plt.hist2d(x, y, bins=(int(w/100), int(h/100)), range=range)
+                    plt.hist2d(x, y, bins=(int(w/150), int(h/150)), range=range)
                     pts = np.array(c, np.int32)
                     pts = pts.reshape((-1, 1, 2))
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
