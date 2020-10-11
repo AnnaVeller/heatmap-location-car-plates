@@ -27,8 +27,9 @@ def search_number(video, name="test"):
             state, cords = load_model.detect_number(frame)
             if state:
                 for c in cords:
+                    logging.info(c)
                     logging.info(c[0])
-
+                    logging.info(c[1])
                     pts = np.array(c, np.int32)
                     pts = pts.reshape((-1, 1, 2))
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
