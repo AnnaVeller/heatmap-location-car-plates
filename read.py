@@ -1,6 +1,7 @@
 import cv2
 import load_model
 import numpy as np
+import matplotlib.pyplot as plt
 
 import logging
 
@@ -23,10 +24,14 @@ def search_number(video, name="test"):
         ret = True
     while ret:
         ret, frame = cap.read()
+        x = []
+        y = []
+        cadr = 0
         if ret:
             state, cords = load_model.detect_number(frame)
             if state:
                 for c in cords:
+                    cadr += 1
                     logging.info(c)
                     logging.info(c[0])
                     x1 = c[0][0]
@@ -39,6 +44,11 @@ def search_number(video, name="test"):
                     y4 = c[3][1]
                     x_mean = (x1+x2+x3+x4)/4
                     y_mean = (y1+y2+y3+y4)/4
+                    x.append(x_mean)
+                    y.append(y_mean)
+                    plt.hist2d(x, y, bins=10)
+                    plt.savefig('video/test' + str(cadr))
+
                     pts = np.array(c, np.int32)
                     pts = pts.reshape((-1, 1, 2))
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
