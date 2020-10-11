@@ -17,10 +17,10 @@ def search_number(video, name="test"):
         logging.debug("Unable to read video")
         ret = False
     else:
-        h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        fps = int(cap.get(cv2.CAP_PROP_FPS))
-        out = cv2.VideoWriter(PATH + name + "_detect.mp4", cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), fps, (w, h))
+        #h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        #w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        #fps = int(cap.get(cv2.CAP_PROP_FPS))
+        #out = cv2.VideoWriter(PATH + name + "_detect.mp4", cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), fps, (w, h))
         ret = True
     while ret:
         ret, frame = cap.read()
@@ -47,12 +47,13 @@ def search_number(video, name="test"):
                     x.append(x_mean)
                     y.append(y_mean)
                     plt.hist2d(x, y, bins=10)
-                    plt.savefig('video/test' + str(cadr))
+
 
                     pts = np.array(c, np.int32)
                     pts = pts.reshape((-1, 1, 2))
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
                     frame = cv2.circle(frame, (int(x_mean), int(y_mean)), 3, (0,0,255), thickness=1)
-            out.write(frame)
+            plt.savefig('video/test' + str(cadr))
+            #out.write(frame)
     cap.release()
     cv2.destroyAllWindows()
