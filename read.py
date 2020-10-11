@@ -21,6 +21,7 @@ def search_number(video, name="test"):
     else:
         h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        range = ((0, w), (0, h))
         #fps = int(cap.get(cv2.CAP_PROP_FPS))
         #out = cv2.VideoWriter(PATH + name + "_detect.mp4", cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), fps, (w, h))
         ret = True
@@ -49,7 +50,7 @@ def search_number(video, name="test"):
                     log.info('Координаты середины номера %f %f' % (x_mean, y_mean))
                     x.append(x_mean)
                     y.append(y_mean)
-                    plt.hist2d(x, y, bins=32, xedges=w, yedges=h)
+                    plt.hist2d(x, y, bins=32, range=range)
                     pts = np.array(c, np.int32)
                     pts = pts.reshape((-1, 1, 2))
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
