@@ -53,12 +53,14 @@ def search_number(video, name="test"):
                     log.info('Координаты середины номера %f %f' % (x_mean, y_mean))
                     x.append(x_mean)
                     y.append(h-y_mean)
-                    plt.hist2d(x, y, bins=60, range=range)
+
                     pts = np.array(c, np.int32)
                     pts = pts.reshape((-1, 1, 2))
                     cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
                     frame = cv2.circle(frame, (int(x_mean), int(y_mean)), 3, (0,0,255), thickness=1)
-            plt.savefig('video/test_' + str(cadr))
+
             #out.write(frame)
+    plt.hist2d(x, y, bins=60, range=range)
+    plt.savefig('video/test')
     cap.release()
     cv2.destroyAllWindows()
