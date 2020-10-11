@@ -60,7 +60,7 @@ def search_number(video, name="test"):
                     frame = cv2.circle(frame, (int(x_mean), int(y_mean)), 3, (0,0,255), thickness=1)
 
             #out.write(frame)
-    plt.hist2d(x, y, bins=60, range=range)
-    plt.savefig('video/test')
+    plt.hist2d(x, y, bins=40, range=range)
+    plt.savefig('video/' + name)
     cap.release()
     cv2.destroyAllWindows()
