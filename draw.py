@@ -5,6 +5,9 @@ PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 file = open(PATH+'test_multy.txt')
 line = file.readline()
 w, h, name, fps = line.split()
+line = file.readline()
+line = file.readline()
+line = file.readline()
 x = []
 y = []
 while line:
