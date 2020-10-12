@@ -12,10 +12,10 @@ log = logging.getLogger('Heatmap')
 log.setLevel(logging.DEBUG)
 
 PATH_VIDEO = "test_mini3.mp4"
-bins = (20, 20)
+bins = (40, 40)
 NAME = os.path.splitext(PATH_VIDEO)[0]
 log.info(" Запустили видео %s" % PATH_VIDEO)
-read.search_number(PATH_VIDEO, NAME, bins)
+read.search_number(PATH_VIDEO, NAME)
 log.info(" Закрыли видео %s \n\n" % PATH_VIDEO)
 
 
