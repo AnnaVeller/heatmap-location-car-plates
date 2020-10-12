@@ -26,7 +26,6 @@ def search_number(video, name="test"):
     cadr_to_write = SEC_TO_WRITE*fps
     while ret:
         ret, frame = cap.read()
-        cadr += 1
         if ret:
             length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
             log.debug(" Прошло: %f sec" % length)
@@ -38,6 +37,7 @@ def search_number(video, name="test"):
                     for c in cords:
                         log.info('Координаты' + str(c[0]))
                         file.write(str(c)+'\n')
+            cadr += 1
     file.close()
     cap.release()
     cv2.destroyAllWindows()
