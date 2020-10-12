@@ -10,7 +10,7 @@ logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
 log = logging.getLogger('Heatmap')
 log.setLevel(logging.DEBUG)
 
-PATH_VIDEO = "big_video.mp4"
+PATH_VIDEO = "test_multy.mp4"
 NAME = os.path.splitext(PATH_VIDEO)[0]
 log.info(" Запустили видео %s" % PATH_VIDEO)
 read.search_number(PATH_VIDEO, NAME)
