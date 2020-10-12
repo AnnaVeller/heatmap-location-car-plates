@@ -4,12 +4,15 @@ import matplotlib.pyplot as plt
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 file = open(PATH+'test_multy.txt')
 line = file.readline()
-w, h, name, fps = int(line.split())
+w, h, name, fps = line.split()
+w = int(w)
+h = int(h)
+fps = float(fps)
 x = []
 y = []
 line = file.readline()
 while line:
-    x1,x2,x3,x4,y1,y2,y3,y4 = int(line.split())
+    [x1, x2, x3, x4, y1, y2, y3, y4] = list(map(lambda x: int(x),  line.split()))
     x.extend([x1,x2,x3,x4])
     y.extend([y1,y2,y3,y4])
     line = file.readline()
