@@ -25,7 +25,7 @@ def search_number(video, name="test"):
         ret = True
     cadr = 0
     time = 0
-    while ret:
+    while ret & (cv2.waitKey(1) & 0xFF != ord('q')):
         ret, frame = cap.read()
         if ret:
             length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
@@ -48,10 +48,6 @@ def search_number(video, name="test"):
                         file.write('%f %f %f %f %f %f %f %f\n' %(x1,x2,x3,x4,y1,y2,y3,y4))
                 time = length
             cadr += 1
-
-        if cv2.waitKey(1) & 0xFF == ord('q'):   # чтобы выйти из цикла
-            log.info("Нажали q для выхода")
-            break
     file.close()
     cap.release()
     cv2.destroyAllWindows()
