@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 file = open(PATH+'test_multy.txt')
 line = file.readline()
+print("1", line)
 w, h, name, fps = line.split()
 line = file.readline()
-line = file.readline()
-line = file.readline()
+print("2", line)
 x = []
 y = []
 while line:
@@ -19,6 +19,7 @@ while line:
 file.close()
 
 bins=(11, 11)
+range = ((0, w), (0, h))
 hist = plt.hist2d(x, y, bins=bins, range=range)
 plt.colorbar(hist[3])
 plt.savefig('video/' + name, bbox_inches='tight')
