@@ -13,7 +13,7 @@ PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 # PATH = "C:/Users/Anna/Documents/sirius/"
 
 
-def search_number(video, name="test"):
+def search_number(video, name="test", bins=(10,10)):
     cap = cv2.VideoCapture(video)
     if not cap.isOpened():
         log.debug("Unable to read video")
@@ -60,7 +60,7 @@ def search_number(video, name="test"):
                     #frame = cv2.circle(frame, (int(x_mean), int(y_mean)), 3, (0,0,255), thickness=1)
 
             #out.write(frame)
-    h = plt.hist2d(x, y, bins=(8,8), range=range)
+    h = plt.hist2d(x, y, bins=bins, range=range)
     plt.colorbar(h[3])
     plt.savefig('video/' + name)
     cap.release()
