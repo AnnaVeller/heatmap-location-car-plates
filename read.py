@@ -48,8 +48,8 @@ def search_number(video, name="test"):
                         file.write('%f %f %f %f %f %f %f %f\n' %(x1,x2,x3,x4,y1,y2,y3,y4))
                 time = length
             cadr += 1
-            
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):   # чтобы выйти из цикла
             log.info("Нажали q для выхода")
             break
     file.close()
