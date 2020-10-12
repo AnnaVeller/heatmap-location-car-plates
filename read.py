@@ -21,7 +21,7 @@ def search_number(video, name="test", bins=(10,10)):
     else:
         h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        range = [0, w, 0, h]
+        range = ((0, w), (0, h))
         log.debug('Видео [%dx%d]' % (w, h))
         #fps = int(cap.get(cv2.CAP_PROP_FPS))
         #out = cv2.VideoWriter(PATH + name + "_detect.mp4", cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), fps, (w, h))
