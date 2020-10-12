@@ -9,6 +9,7 @@ x = []
 y = []
 while line:
     line = file.readline()
+    print("output", line)
     x1,x2,x3,x4,y1,y2,y3,y4 = line.split()
     x.extend([x1,x2,x3,x4])
     y.extend([y1,y2,y3,y4])
