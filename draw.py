@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 file = open(PATH+'test_multy.txt')
-print(file[0])
-[w, h, name, fps] = file[0].split()
+#print(file[0])
+#[w, h, name, fps] = file[0].split()
 x = []
 y = []
-for line in file[1:]:
+for line in file:
     print(line)
     x1,x2,x3,x4,y1,y2,y3,y4 = line.split()
     x.extend([x1,x2,x3,x4])
