@@ -1,6 +1,7 @@
 import cv2
 import logging
 import load_model
+import msvcrt
 
 logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
 log = logging.getLogger('Heatmap')
@@ -25,7 +26,10 @@ def search_number(video, name="test"):
         ret = True
     cadr = 0
     time = 0
-    while ret & (cv2.waitKey(1) & 0xFF != ord('q')):
+    while ret and msvcrt.kbhit()==False:
+        key = str(msvcrt.getch())
+        if key == "b'w'":
+            print(key)
         ret, frame = cap.read()
         if ret:
             length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
