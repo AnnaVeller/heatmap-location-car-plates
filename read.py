@@ -7,7 +7,7 @@ log = logging.getLogger('Heatmap')
 log.setLevel(logging.DEBUG)
 
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
-SEC_TO_WRITE = 1
+SEC_TO_WRITE = 0.5
 
 def search_number(video, name="test"):
     file = open(PATH + name + '.txt', 'a')
@@ -23,20 +23,21 @@ def search_number(video, name="test"):
         log.debug('Видео [%dx%d]' % (w, h))
         ret = True
     cadr = 0
-    cadr_to_write = SEC_TO_WRITE*fps
+    time = 0
     while ret:
         ret, frame = cap.read()
         if ret:
             length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
             log.debug(" Прошло: %f sec" % length)
-            if cadr % cadr_to_write == 0:
+            if length-time >= SEC_TO_WRITE:
                 log.debug(" Ищем на: %f sec" % length)
                 state, cords = load_model.detect_number(frame)
                 if state:
                     log.debug('Нашли номер на %d кадре' % cadr)
                     for c in cords:
                         log.info('Координаты' + str(c[0]))
-                        file.write(str(c)+'\n')
+                        file.write(str(c) + '\n')
+                time = length
             cadr += 1
     file.close()
     cap.release()
