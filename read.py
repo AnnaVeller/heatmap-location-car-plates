@@ -23,14 +23,14 @@ def search_number(video, name="test"):
         log.debug('Видео [%dx%d]' % (w, h))
         ret = True
     cadr = 0
-    cadr_to_write = SEC_TO_WRITE*fps
+    cadr_to_write = int(SEC_TO_WRITE*fps)
     while ret:
         ret, frame = cap.read()
         cadr += 1
         if ret:
             length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
             log.debug(" Прошло: %f sec" % length)
-            if cadr % cadr_to_write == 0:
+            if cadr == cadr_to_write:
                 log.debug(" Ищем на: %f sec" % length)
                 state, cords = load_model.detect_number(frame)
                 if state:
