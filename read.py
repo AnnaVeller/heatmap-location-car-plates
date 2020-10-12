@@ -11,7 +11,7 @@ SEC_TO_WRITE = 2
 
 
 def search_number(video, name="test"):
-    file = open(PATH + name + '.txt', 'a')
+    file = open(PATH + name + '.txt', 'w')      # a - дозапись
     cap = cv2.VideoCapture(video)
     if not cap.isOpened():
         log.debug("Unable to read video")
