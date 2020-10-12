@@ -8,6 +8,7 @@ log.setLevel(logging.DEBUG)
 
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
 
+
 def search_number(video, name="test"):
     file = open(name + '.txt', 'a')
     cap = cv2.VideoCapture(video)
@@ -40,5 +41,6 @@ def search_number(video, name="test"):
             else:
                 time_between = time_between + length - delta_time
             log.debug(" Прошло: %f sec, между обработанными кадрами %f sec" % (length, time_between))
+    file.close()
     cap.release()
     cv2.destroyAllWindows()
