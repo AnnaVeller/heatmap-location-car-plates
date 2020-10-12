@@ -60,10 +60,11 @@ def search_number(video, name="test", bins=(10,10)):
                     #frame = cv2.circle(frame, (int(x_mean), int(y_mean)), 3, (0,0,255), thickness=1)
 
             #out.write(frame)
-    #hist = plt.hist2d(x, y, bins=bins, range=range)
-    #plt.colorbar(hist[3])
-    #plt.savefig('video/' + name, bbox_inches='tight')
-    return x,y, range
+    hist = plt.hist2d(x, y, bins=bins, range=range)
+    plt.colorbar(hist[3])
+    plt.savefig('video/' + name, bbox_inches='tight')
+    plt.clf()
+    plt.cla()
     x.clear()
     y.clear()
     cap.release()

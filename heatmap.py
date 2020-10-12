@@ -15,22 +15,14 @@ PATH_VIDEO = "test_mini3.mp4"
 bins = (11, 11)
 NAME = os.path.splitext(PATH_VIDEO)[0]
 log.info(" Запустили видео %s" % PATH_VIDEO)
-x,y, range = read.search_number(PATH_VIDEO, NAME)
+read.search_number(PATH_VIDEO, NAME, bins)
 log.info(" Закрыли видео %s \n\n" % PATH_VIDEO)
-draw.draw_hist(x,y, range, bins, NAME)
-x.clear()
-y.clear()
 
 
 PATH_VIDEO = "test_mini2.mp4"
 bins = (9, 9)
-NAME = os.path.splitext(PATH_VIDEO)[0]
-log.info(" Запустили видео %s" % PATH_VIDEO)
-x,y, range = read.search_number(PATH_VIDEO, NAME)
+read.search_number(PATH_VIDEO, NAME, bins)
 log.info(" Закрыли видео %s \n\n" % PATH_VIDEO)
-draw.draw_hist(x,y, range, bins, NAME)
-x.clear()
-y.clear()
 
 
 #PATH_VIDEO = "test_mini4.mp4"
