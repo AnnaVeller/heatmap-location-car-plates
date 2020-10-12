@@ -40,6 +40,9 @@ def search_number(video, name="test", bins=(10,10)):
                 log.debug('Нашли номер на %d кадре' %cadr)
                 for c in cords:
                     log.info('Координаты' + str(c[0]))
+                    for i in [0,1,2,3]:
+                        x.append(c[i][0])
+                        y.append(c[i][1])
                     x1 = c[0][0]
                     x2 = c[1][0]
                     x3 = c[2][0]
@@ -51,8 +54,8 @@ def search_number(video, name="test", bins=(10,10)):
                     x_mean = (x1+x2+x3+x4)/4
                     y_mean = (y1+y2+y3+y4)/4
                     log.info('Координаты середины номера %f %f' % (x_mean, y_mean))
-                    x.append(x_mean)
-                    y.append(h-y_mean)
+                    #x.append(x_mean)
+                    #y.append(h-y_mean)
 
                     #pts = np.array(c, np.int32)
                     #pts = pts.reshape((-1, 1, 2))
