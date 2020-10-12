@@ -63,6 +63,7 @@ def search_number(video, name="test", bins=(10,10)):
     hist = plt.hist2d(x, y, bins=bins, range=range)
     plt.colorbar(hist[3])
     plt.savefig('video/' + name, bbox_inches='tight')
+    return x,y
     x.clear()
     y.clear()
     cap.release()
