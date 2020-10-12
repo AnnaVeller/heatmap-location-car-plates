@@ -5,7 +5,6 @@ import warnings
 warnings.filterwarnings('ignore')
 import read
 import logging
-import draw
 
 logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
 log = logging.getLogger('Heatmap')

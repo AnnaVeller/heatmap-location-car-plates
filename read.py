@@ -37,7 +37,15 @@ def search_number(video, name="test"):
                     log.debug('Нашли номер на %d кадре' % cadr)
                     for c in cords:
                         log.info('Координаты' + str(c[0]))
-                        file.write(str(c) + '\n')
+                        x1 = c[0][0]
+                        x2 = c[1][0]
+                        x3 = c[2][0]
+                        x4 = c[3][0]
+                        y1 = c[0][1]
+                        y2 = c[1][1]
+                        y3 = c[2][1]
+                        y4 = c[3][1]
+                        file.write('%f %f %f %f %f %f %f %f\n' %(x1,x2,x3,x4,y1,y2,y3,y4))
                 time = length
             cadr += 1
     file.close()
