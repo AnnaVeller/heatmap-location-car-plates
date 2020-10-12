@@ -7,12 +7,12 @@ line = file.readline()
 w, h, name, fps = line.split()
 x = []
 y = []
+line = file.readline()
 while line:
-    line = file.readline()
-    print("output", line)
     x1,x2,x3,x4,y1,y2,y3,y4 = line.split()
     x.extend([x1,x2,x3,x4])
     y.extend([y1,y2,y3,y4])
+    line = file.readline()
 file.close()
 
 bins=(11, 11)
