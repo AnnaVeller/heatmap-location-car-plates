@@ -7,7 +7,7 @@ log = logging.getLogger('Heatmap')
 log.setLevel(logging.DEBUG)
 
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
-SEC_TO_WRITE = 0.9
+SEC_TO_WRITE = 0.5
 
 
 def search_number(video, name="test"):
