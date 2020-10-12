@@ -24,11 +24,11 @@ read.search_number(PATH_VIDEO, NAME, bins)
 log.info(" Закрыли видео %s/n/n" % PATH_VIDEO)
 
 
-PATH_VIDEO = "test_mini4.mp4"
-bins = (10, 10)
-NAME = os.path.splitext(PATH_VIDEO)[0]
-log.info(" Запустили видео %s" % PATH_VIDEO)
-read.search_number(PATH_VIDEO, NAME, bins)
-log.info(" Закрыли видео %s/n/n" % PATH_VIDEO)
+#PATH_VIDEO = "test_mini4.mp4"
+#bins = (10, 10)
+#NAME = os.path.splitext(PATH_VIDEO)[0]
+#log.info(" Запустили видео %s" % PATH_VIDEO)
+#read.search_number(PATH_VIDEO, NAME, bins)
+#log.info(" Закрыли видео %s/n/n" % PATH_VIDEO)
 
 
