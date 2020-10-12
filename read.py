@@ -40,29 +40,22 @@ def search_number(video, name="test", bins=(10,10)):
                 log.debug('Нашли номер на %d кадре' %cadr)
                 for c in cords:
                     log.info('Координаты' + str(c[0]))
-                    for i in [0,1,2,3]:
+                    for i in [0, 1, 2, 3]:
                         x.append(c[i][0])
                         y.append(h - c[i][1])
-                    x1 = c[0][0]
-                    x2 = c[1][0]
-                    x3 = c[2][0]
-                    x4 = c[3][0]
-                    y1 = c[0][1]
-                    y2 = c[1][1]
-                    y3 = c[2][1]
-                    y4 = c[3][1]
-                    x_mean = (x1+x2+x3+x4)/4
-                    y_mean = (y1+y2+y3+y4)/4
-                    log.info('Координаты середины номера %f %f' % (x_mean, y_mean))
+                    #x1 = c[0][0]
+                    #x2 = c[1][0]
+                    #x3 = c[2][0]
+                    #x4 = c[3][0]
+                    #y1 = c[0][1]
+                    #y2 = c[1][1]
+                    #y3 = c[2][1]
+                    #y4 = c[3][1]
+                    #x_mean = (x1+x2+x3+x4)/4
+                    #y_mean = (y1+y2+y3+y4)/4
+                    #log.info('Координаты середины номера %f %f' % (x_mean, y_mean))
                     #x.append(x_mean)
                     #y.append(h-y_mean)
-
-                    #pts = np.array(c, np.int32)
-                    #pts = pts.reshape((-1, 1, 2))
-                    #cv2.polylines(frame, [pts], True, (255, 0, 0), 2)
-                    #frame = cv2.circle(frame, (int(x_mean), int(y_mean)), 3, (0,0,255), thickness=1)
-
-            #out.write(frame)
     hist = plt.hist2d(x, y, bins=bins, range=range)
     plt.colorbar(hist[3])
     plt.savefig('video/' + name, bbox_inches='tight')
