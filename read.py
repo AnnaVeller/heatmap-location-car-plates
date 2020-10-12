@@ -42,7 +42,7 @@ def search_number(video, name="test", bins=(10,10)):
                     log.info('Координаты' + str(c[0]))
                     for i in [0,1,2,3]:
                         x.append(c[i][0])
-                        y.append(c[i][1])
+                        y.append(h - c[i][1])
                     x1 = c[0][0]
                     x2 = c[1][0]
                     x3 = c[2][0]
