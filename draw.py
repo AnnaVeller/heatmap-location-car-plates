@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
-file = open(PATH+'big_test.txt')
+file = open(PATH+'big_video.txt')
 line = file.readline()
 w, h, name, fps = line.split()
 w = int(w)
