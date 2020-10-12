@@ -18,6 +18,9 @@ log.info(" Запустили видео %s" % PATH_VIDEO)
 x,y, range = read.search_number(PATH_VIDEO, NAME)
 log.info(" Закрыли видео %s \n\n" % PATH_VIDEO)
 draw.draw_hist(x,y, range, bins, NAME)
+x.clear()
+y.clear()
+
 
 PATH_VIDEO = "test_mini2.mp4"
 bins = (9, 9)
@@ -26,6 +29,8 @@ log.info(" Запустили видео %s" % PATH_VIDEO)
 x,y, range = read.search_number(PATH_VIDEO, NAME)
 log.info(" Закрыли видео %s \n\n" % PATH_VIDEO)
 draw.draw_hist(x,y, range, bins, NAME)
+x.clear()
+y.clear()
 
 
 #PATH_VIDEO = "test_mini4.mp4"
