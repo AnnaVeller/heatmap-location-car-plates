@@ -3,15 +3,23 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = ""  # For CPU inference
 import warnings
 warnings.filterwarnings('ignore')
-import read
+import argparse
 import logging
+import read
+
+parser = argparse.ArgumentParser(description='tutorial:')
+parser.add_argument('--video', dest='video', default="test_mini2.mp4", help="Video file")
+
+parser.add_argument('--file', dest='filename', default="test.txt", help="File with cordinates of plates")
+args = parser.parse_args()
+
 
 logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
 log = logging.getLogger('Heatmap')
 log.setLevel(logging.DEBUG)
 
-PATH_VIDEO = "test_multy.mp4"
-NAME = os.path.splitext(PATH_VIDEO)[0]
-log.info(" Запустили видео %s" % PATH_VIDEO)
-read.search_number(PATH_VIDEO, NAME)
-log.info(" Закрыли видео %s \n\n" % PATH_VIDEO)
+
+name = os.path.splitext(args.video)[0]
+log.info(" Run video %s" % args.video)
+read.search_number(args.video, args.filename, name)
+log.info(" Close video %s \n\n" % args.video)

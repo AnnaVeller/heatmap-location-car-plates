@@ -1,2 +1,4 @@
 .idea/
 video_heatmap/
+__pycache__/
+video/
