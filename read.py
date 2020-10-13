@@ -8,11 +8,13 @@ log = logging.getLogger('Heatmap')
 log.setLevel(logging.DEBUG)
 
 PATH = "/home/user/repos/heatmap-location-car-plates/video/"
-SEC_TO_WRITE = 0   # 0 - process all cadr
+SEC_TO_WRITE = 0.5   # 0 - process all cadr
 
 
-def search_number(video, file, name="test"):
+def search_number(video, file, type, name="test"):
+    
     file = open(PATH + file, 'w')      # a - add to file
+    
     cap = cv2.VideoCapture(video)
     h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -20,23 +22,27 @@ def search_number(video, file, name="test"):
     file.write('%d %d %s %d \n' % (w, h, name, fps))
     log.debug(' Video [%dx%d]' % (w, h))
     ret = True
-    cadr = 0
-    time_between = 0
-    start_time = time.time()
-    last_cadr_time = time.time() + SEC_TO_WRITE 
+    
+    last_cadr_time_video = -SEC_TO_WRITE  # time of last capture cadr on video 
+    start_time = time.time()  # time os starting process video/stream
+    last_cadr_time_stream = time.time() - SEC_TO_WRITE # time of last capture cadr on stream
+    
     while ret:
+        ret, frame = cap.read()
+        length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
+        
         try:
-            if time.time()-last_cadr_time >= SEC_TO_WRITE:
-                ret, frame = cap.read()
-                last_cadr_time = time.time()
+            if (time.time()-last_cadr_time_stream >= SEC_TO_WRITE and type=='s') or (length-last_cadr_time_video >= SEC_TO_WRITE and type=='v'):
                 if ret:
-                    length = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
-                    log.debug(" In video now : %f sec" % length)
+                    if type=='v':
+                        last_cadr_time_video = length
+                        log.debug(" In video now : %f sec" % length)
+                    else:
+                        last_cadr_time_stream = time.time()
                     run_time = time.time() - start_time
-                    log.debug(" Last from begin real time : %f sec" % run_time)
+                    log.debug(" Last from begin in real time : %f sec" %run_time)
                     state, cords = load_model.detect_number(frame)
                     if state:
-                        log.debug(' Found on %d cadr' % cadr)
                         for c in cords:
                             log.info(' Number plate: ' + str(c[0]) + '...')
                             x1 = c[0][0]
@@ -48,10 +54,12 @@ def search_number(video, file, name="test"):
                             y3 = c[2][1]
                             y4 = c[3][1]
                             file.write('%f %f %f %f %f %f %f %f\n' %(x1,x2,x3,x4,y1,y2,y3,y4))
-                    cadr += 1
+        
         except KeyboardInterrupt:
             log.debug(' KeyboardInterrupt by ctrl+c')
             break
+    
     file.close()
     cap.release()
     cv2.destroyAllWindows()
+
