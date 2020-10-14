@@ -1,8 +1,12 @@
 import matplotlib.pyplot as plt
+import argparse
 
+parser = argparse.ArgumentParser(description='tutorial:')
+parser.add_argument('--file', dest='file', default="test.txt", help="File txt with")
+args = parser.parse_args()
 
-PATH = "/home/user/repos/heatmap-location-car-plates/video/"
-file = open(PATH+'big_video.txt')
+PATH = "/home/user/repos/heatmap-location-car-plates/files_heatmap/"
+file = open(PATH + args.file)
 line = file.readline()
 w, h, name, fps = line.split()
 w = int(w)
@@ -20,26 +24,10 @@ while line:
     line = file.readline()
 file.close()
 
-bins = (15, 15)
-range = ((0, w), (0, h))
-hist = plt.hist2d(x, y, bins=bins, range=range)
-plt.colorbar(hist[3])
-plt.savefig('video/' + name + str(bins), bbox_inches='tight')
-plt.clf()
-plt.cla()
-
-bins = (20, 20)
-range = ((0, w), (0, h))
-hist = plt.hist2d(x, y, bins=bins, range=range)
-plt.colorbar(hist[3])
-plt.savefig('video/' + name + str(bins), bbox_inches='tight')
-plt.clf()
-plt.cla()
-
 bins = (25, 25)
 range = ((0, w), (0, h))
 hist = plt.hist2d(x, y, bins=bins, range=range)
 plt.colorbar(hist[3])
-plt.savefig('video/' + name + str(bins), bbox_inches='tight')
+plt.savefig(PATH + name + str(bins), bbox_inches='tight')
 plt.clf()
 plt.cla()
