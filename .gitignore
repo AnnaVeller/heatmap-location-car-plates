@@ -1,3 +1,4 @@
 .idea
 __pycache__
 log/file.log
+files_heatmap
