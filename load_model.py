@@ -8,7 +8,7 @@ log = logging.getLogger('load_model')
 NOMEROFF_NET_DIR = os.path.abspath('../')
 MASK_RCNN_DIR = os.path.join(NOMEROFF_NET_DIR, 'Mask_RCNN')
 MASK_RCNN_LOG_DIR = os.path.join(NOMEROFF_NET_DIR, 'logs')
-log.debug(' Путь к Mask_RCNN ' + MASK_RCNN_DIR)
+log.debug(' Path to Mask_RCNN ' + MASK_RCNN_DIR)
 sys.path.append(NOMEROFF_NET_DIR)
 
 nnet = Detector(MASK_RCNN_DIR, MASK_RCNN_LOG_DIR)
