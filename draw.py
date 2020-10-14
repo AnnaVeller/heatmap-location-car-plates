@@ -32,3 +32,21 @@ plt.colorbar(hist[3])
 plt.savefig(PATH + name + str(bins), bbox_inches='tight')
 plt.clf()
 plt.cla()
+
+k = 1/10
+bins = (int(w*k), int(h*k))
+range = ((0, w), (0, h))
+hist = plt.hist2d(x, y, bins=bins, range=range)
+plt.colorbar(hist[3])
+plt.savefig(PATH + name + str(bins), bbox_inches='tight')
+plt.clf()
+plt.cla()
+
+k=1/40
+bins = (int(w*k), int(h*k))
+range = ((0, w), (0, h))
+hist = plt.hist2d(x, y, bins=bins, range=range)
+plt.colorbar(hist[3])
+plt.savefig(PATH + name + str(bins), bbox_inches='tight')
+plt.clf()
+plt.cla()
