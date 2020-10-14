@@ -4,8 +4,8 @@ from NomeroffNet import filters, RectDetector, TextDetector, OptionsDetector,  D
     textPostprocessing, textPostprocessingAsync
 
 import logging.config
-logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
-logger = logging.getLogger(__name__)
+logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
+logger = logging.getLogger('load_model')
 
 NOMEROFF_NET_DIR = os.path.abspath('../')
 MASK_RCNN_DIR = os.path.join(NOMEROFF_NET_DIR, 'Mask_RCNN')

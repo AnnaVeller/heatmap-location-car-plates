@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import argparse
+import logging.config
+
+logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
+log = logging.getLogger('draw.py')
 
 parser = argparse.ArgumentParser(description='tutorial:')
 parser.add_argument('--file', dest='file', default='test.txt', help='File txt with coordinates of plates')
@@ -9,7 +13,9 @@ args = parser.parse_args()
 k = int(args.k)
 
 PATH = 'files_heatmap/'
+file_path = PATH + args.file
 file = open(PATH + args.file)
+log.debug(' Open %s' % file_path)
 line = file.readline()
 w, h, name, fps = line.split()
 w = int(w)
@@ -48,6 +54,7 @@ while line:
     y.extend([y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11, y12, y13, y14])
     line = file.readline()
 file.close()
+log.debug(' Closed %s' % file_path)
 
 plt.style.use('dark_background')    # 'dark_background', 'ggplot', 'Solarize_Light2'
 

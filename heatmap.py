@@ -9,8 +9,8 @@ import read
 
 import logging.config
 
-logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
-logger = logging.getLogger(__name__)
+logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
+logger = logging.getLogger('heatmap.py')
 
 parser = argparse.ArgumentParser(description='tutorial:')
 parser.add_argument('--video', dest='video', default='test_mini2.mp4', help='Videofile or stream url')

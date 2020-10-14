@@ -7,8 +7,8 @@ import load_model
 #log = logging.getLogger('Heatmap')
 #log.setLevel(logging.DEBUG)
 import logging.config
-logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
-logger = logging.getLogger(__name__)
+logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
+logger = logging.getLogger('read.py')
 
 PATH = 'files_heatmap/'
 SEC_TO_WRITE = 0.5   # 0 - process all cadr
