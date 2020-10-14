@@ -13,8 +13,7 @@ log = logging.getLogger(__name__)
 parser = argparse.ArgumentParser(description='tutorial:')
 parser.add_argument('--video', dest='video', default='test_mini2.mp4', help='Videofile or stream url')
 parser.add_argument('--file', dest='filename', default='test.txt', help='File with coordinates of plates')
-parser.add_argument('--type', dest='type', default='s', help='s-stream, v-videofile')
-parser.add_argument('--debug', dest='deb_level', default='DEBUG', help='Level of debug')
+parser.add_argument('--type', dest='type', default='v', help='s-stream, v-videofile')
 args = parser.parse_args()
 
 PATH = 'video/'
