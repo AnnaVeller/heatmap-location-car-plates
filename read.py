@@ -1,14 +1,10 @@
 import cv2
 import time
-import logging
 import load_model
-
-#logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
-#log = logging.getLogger('Heatmap')
-#log.setLevel(logging.DEBUG)
 import logging.config
+
 logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
-logger = logging.getLogger('read.py')
+log = logging.getLogger(__name__)
 
 PATH = 'files_heatmap/'
 SEC_TO_WRITE = 0.5   # 0 - process all cadr

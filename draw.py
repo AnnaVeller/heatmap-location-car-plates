@@ -4,7 +4,7 @@ import argparse
 import logging.config
 
 logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
-log = logging.getLogger('draw.py')
+log = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser(description='tutorial:')
 parser.add_argument('--file', dest='file', default='test.txt', help='File txt with coordinates of plates')
@@ -64,7 +64,9 @@ plt.scatter(x, y, s=1.5)
 ax.axis('scaled')    # равный масштаб осей
 ax.set_xlim(0, w)
 ax.set_ylim(0, h)
-plt.savefig(PATH + name + '_6points', bbox_inches='tight')
+path_file_15points = PATH + name + '_6points'
+plt.savefig(path_file_15points, bbox_inches='tight')
+log.debug(' Draw 15 main plates points and save in in %s' %path_file_15points)
 
 bins = (int(w/k), int(h/k))
 range = ((0, w), (0, h))
@@ -78,7 +80,9 @@ ax.set_ylim(0, h)
 plt.colorbar(hist[3])
 ax.grid(color='black', linewidth=0.5, linestyle='--')
 ax.set_title('Heatmap for %s\n%s\n[%dx%d]' % (args.file, str(bins), w, h))
-plt.savefig(PATH + name + str(bins), bbox_inches='tight')
+path_heatmap = PATH + name + str(bins)
+plt.savefig(path_heatmap, bbox_inches='tight')
+log.debug(' Draw heatmap and save it in %s' %path_heatmap)
 plt.show()
 plt.clf()
 plt.cla()
