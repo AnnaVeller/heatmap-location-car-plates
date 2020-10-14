@@ -3,15 +3,18 @@ import time
 import logging
 import load_model
 
-logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
-log = logging.getLogger('Heatmap')
-log.setLevel(logging.DEBUG)
+#logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s')
+#log = logging.getLogger('Heatmap')
+#log.setLevel(logging.DEBUG)
+import logging.config
+logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
 
-PATH = "/home/user/repos/heatmap-location-car-plates/video/"
+PATH = 'files_heatmap/'
 SEC_TO_WRITE = 0.5   # 0 - process all cadr
 
 
-def search_number(video, file, type, name="test"):
+def search_number(video, file, type, name='test'):
     
     file = open(PATH + file, 'w')      # a - add to file
     
@@ -36,11 +39,11 @@ def search_number(video, file, type, name="test"):
                 if ret:
                     if type=='v':
                         last_cadr_time_video = length
-                        log.debug(" In video now : %f sec" % length)
+                        log.debug(' In video now : %f sec' % length)
                     else:
                         last_cadr_time_stream = time.time()
                     run_time = time.time() - start_time
-                    log.debug(" Last from begin in real time : %f sec" %run_time)
+                    log.debug(' Last from begin in real time : %f sec' %run_time)
                     state, cords = load_model.detect_number(frame)
                     if state:
                         for c in cords:
