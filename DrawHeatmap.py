@@ -17,7 +17,7 @@ file_path = PATH + args.file
 file = open(PATH + args.file)
 log.debug(' Open %s' % file_path)
 line = file.readline()
-w, h, name, fps = line.split()
+w, h, name_video, fps = line.split()
 w = int(w)
 h = int(h)
 fps = float(fps)
@@ -64,7 +64,7 @@ plt.scatter(x, y, s=1.5)
 ax.axis('scaled')    # равный масштаб осей
 ax.set_xlim(0, w)
 ax.set_ylim(0, h)
-path_file_15points = PATH + name + '_6points'
+path_file_15points = PATH + name_video + '_6points'
 plt.savefig(path_file_15points, bbox_inches='tight')
 log.debug(' Draw 15 main plates points and save in in %s' %path_file_15points)
 
@@ -80,7 +80,7 @@ ax.set_ylim(0, h)
 plt.colorbar(hist[3])
 ax.grid(color='black', linewidth=0.5, linestyle='--')
 ax.set_title('Heatmap for %s\n%s\n[%dx%d]' % (args.file, str(bins), w, h))
-path_heatmap = PATH + name + str(bins)
+path_heatmap = PATH + name_video + str(bins)
 plt.savefig(path_heatmap, bbox_inches='tight')
 log.debug(' Draw heatmap and save it in %s' %path_heatmap)
 plt.show()

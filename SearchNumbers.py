@@ -10,7 +10,7 @@ PATH = 'files_heatmap/'
 SEC_TO_WRITE = 0.5   # 0 - process all cadr
 
 
-def search_number(video, file, type, name='test'):
+def search_number(video, file, type, name_video='test'):
     
     file = open(PATH + file, 'w')      # a - add to file
     
@@ -18,7 +18,7 @@ def search_number(video, file, type, name='test'):
     h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     fps = int(cap.get(cv2.CAP_PROP_FPS))
-    file.write('%d %d %s %d \n' % (w, h, name, fps))
+    file.write('%d %d %s %d \n' % (w, h, name_video, fps))
     log.debug(' Video [%dx%d]' % (w, h))
     ret = True
     
