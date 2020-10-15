@@ -65,7 +65,7 @@ plt.scatter(x, y, s=1.5)
 ax.axis('scaled')    # равный масштаб осей
 ax.set_xlim(0, w)
 ax.set_ylim(0, h)
-path_file_15points = PATH + name_video + '_6points'
+path_file_15points = PATH + name_video + '_15points'
 plt.savefig(path_file_15points, bbox_inches='tight')
 log.debug(' Draw 15 main plates points and save in in %s' %path_file_15points)
 
