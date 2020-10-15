@@ -1,4 +1,0 @@
-2020-10-14 19:21:28,055 __main__ - DEBUG: Open files_heatmap/multy_mini.txt
-2020-10-14 19:21:28,055 __main__ - DEBUG: Closed files_heatmap/multy_mini.txt
-2020-10-14 19:21:28,365 __main__ - DEBUG: Draw 15 main plates points and save in in files_heatmap/multy_mini_6points
-2020-10-14 19:21:28,710 __main__ - DEBUG: Draw heatmap and save it in files_heatmap/multy_mini(64, 48)
