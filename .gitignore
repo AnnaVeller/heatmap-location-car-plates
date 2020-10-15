@@ -1,4 +1,4 @@
-.idea
-__pycache__
-log/file.log
-files_heatmap
+/.idea
+/__pycache__
+/log/file.log
+/files_heatmap
