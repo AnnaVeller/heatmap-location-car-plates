@@ -7,7 +7,7 @@ import argparse
 import logging.config
 import SearchNumbers
 
-logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
+logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
 log = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser(description='tutorial:')
@@ -19,7 +19,7 @@ args = parser.parse_args()
 PATH_VIDEO = 'video/'
 name = os.path.splitext(args.video)[0]      # name of video without file extension
 if args.filename == 'no':       # if name of file with txt doesn't point - it will be name of video
-    filename = name
+    filename = name + '.txt'
 else:
     filename = args.filename
 

@@ -3,7 +3,7 @@ import sys
 from NomeroffNet import filters, RectDetector, Detector
 import logging.config
 
-logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
+logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
 log = logging.getLogger('load_model')
 
 NOMEROFF_NET_DIR = os.path.abspath('../')

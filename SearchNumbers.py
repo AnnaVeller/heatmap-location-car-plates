@@ -3,7 +3,7 @@ import time
 import logging.config
 import LoadModel
 
-logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
+logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
 log = logging.getLogger(__name__)
 
 PATH = 'files_heatmap/'
@@ -12,8 +12,10 @@ SEC_TO_WRITE = 0.5   # 0 - process all cadr
 
 def search_number(video, file, type, name_video='test'):
     
-    file = open(PATH + file, 'w')      # a - add to file
-    
+    path_to_file_txt = PATH + file
+    file = open(path_to_file_txt, 'w')      # a - add to file
+    log.debug(' Created/opened %s' % path_to_file_txt)
+
     cap = cv2.VideoCapture(video)
     h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -21,6 +23,9 @@ def search_number(video, file, type, name_video='test'):
     file.write('%d %d %s %d \n' % (w, h, name_video, fps))
     log.debug(' Video [%dx%d]' % (w, h))
     ret = True
+
+    if not cap.isOpened():
+        ret = False
     
     last_cadr_time_video = -SEC_TO_WRITE  # time of last capture cadr on video 
     start_time = time.time()  # time os starting process video/stream
