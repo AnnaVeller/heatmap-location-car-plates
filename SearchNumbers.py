@@ -1,7 +1,7 @@
 import cv2
 import time
-import load_model
 import logging.config
+import LoadModel
 
 logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
 log = logging.getLogger(__name__)
@@ -40,7 +40,7 @@ def search_number(video, file, type, name='test'):
                         last_cadr_time_stream = time.time()
                     run_time = time.time() - start_time
                     log.debug(' Last from begin in real time : %f sec' %run_time)
-                    state, cords = load_model.detect_number(frame)
+                    state, cords = LoadModel.detect_number(frame)
                     if state:
                         for c in cords:
                             log.info(' Number plate: ' + str(c[0]) + '...')

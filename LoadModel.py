@@ -2,6 +2,7 @@ import os
 import sys
 from NomeroffNet import filters, RectDetector, Detector
 import logging.config
+
 logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
 log = logging.getLogger('load_model')
 

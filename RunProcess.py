@@ -4,8 +4,8 @@ os.environ['CUDA_VISIBLE_DEVICES'] = ''  # For CPU inference
 import warnings
 warnings.filterwarnings('ignore')
 import argparse
-import read
 import logging.config
+import SearchNumbers
 
 logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
 log = logging.getLogger(__name__)
@@ -19,5 +19,5 @@ args = parser.parse_args()
 PATH = 'video/'
 name = os.path.splitext(args.video)[0]
 log.info(' Run video %s' % args.video)
-read.search_number(PATH + args.video, args.filename, args.type, name)
+SearchNumbers.search_number(PATH + args.video, args.filename, args.type, name)
 log.info(' Close video %s \n\n' % args.video)
