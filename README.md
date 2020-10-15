@@ -11,7 +11,7 @@
 
 
 
-## * Кратко* <a name='1'></a>
+## *Кратко* <a name='1'></a>
 [Runprocess.Py](https://github.com/AnnaVeller/heatmap-location-car-plates/blob/master/RunProcess.py "Runprocess.Py")
 Запускает видео/стрим и создает файл, с координатами найденных номеров
 
