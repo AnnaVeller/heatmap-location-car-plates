@@ -81,7 +81,7 @@
 
 снизу: слева=30, справа=20
 
-![Heatmap для разных k](https://sun9-51.userapi.com/JtsdlH3HYkWhJnzDsKmFMA688_Gcy1pfNEPZuQ/nW9JRUeg1Eo.jpg "Heatmap для разных k")
+![Heatmap для разных k](https://sun9-51.userapi.com/jZyhvoX7OKzFyEAvVzBkLooWkEnhjjmVgVbslw/E6Ljh87eMfQ.jpg)
 
 
-![](https://sun9-51.userapi.com/Q_gE-4KeRhZQdYfBE8WdQ243A0Kh4Z2Qg3_UtQ/uy2miVzbd1Q.jpg)
+![](https://sun9-51.userapi.com/TVCpLb156oprd0QC4xbYfE97vlnT_NScyqF9ng/MLHLiYes4T0.jpg)
