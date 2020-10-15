@@ -1,4 +1,4 @@
-# Построение частотной heatmap (тепловой карты) нахождения автомобилььных номеров на видео или онлайн камерах
+# Построение частотной heatmap (тепловой карты) нахождения автомобильных номеров на видео или онлайн камерах
 1. [*Кратко*](#1)
 2. [*Подробно*](#2)
     1. [Установка под GPU](#2.1)
@@ -56,24 +56,32 @@
 `--k=40` *Характеристика разбивки на зоны. Желательный интервал [20, 100]. При 20 - большее количество зон, при 100 - зон меньше. По умолчанию указано 40*
 
 ### Примеры полученных изображений heatmap <a name='2.5'></a>
+
 ###### 1) Запустили [Runprocess.Py](https://github.com/AnnaVeller/heatmap-location-car-plates/blob/master/RunProcess.py "Runprocess.Py") таким образом:
 
-`$python3 RunProcess.py --video=multy_mini.MOV --file=multy_mini.txt --type=v --gpu=no`
+`python3 RunProcess.py --video=multy_mini.MOV --file=multy_mini.txt --type=v --gpu=no`
+
 что было бы аналогично из-за дефолтных настроек этому:
-`$python3 RunProcess.py --video=multy_mini.MOV`
+
+`python3 RunProcess.py --video=multy_mini.MOV`
 
 
 ###### 2) Запускаем [DrawHeatmap.py](https://github.com/AnnaVeller/heatmap-location-car-plates/blob/master/DrawHeatmap.py "DrawHeatmap.py"):
 
-`$python3 DrawHeatmap.py --file=multy_mini.txt --k=60 --show=True`
-После этого мы видим на экране картинку с ~~какой-то хренью~~ отображением 15 точек для каждого номера и heatmap, а также они сохраняются в [files_heatmap](https://github.com/AnnaVeller/heatmap-location-car-plates/tree/master/files_heatmap "files_heatmap").
+`python3 DrawHeatmap.py --file=multy_mini.txt --k=60 --show=True`
 
-###### 3) Затем мы поэкспериментируем с k. Поставим 60, 40, 30, 20
-(сверху: слева k=60, справа=40,
-снизу: слева=30, справа=20)
+После этого мы видим на экране картинку ~~c какой-то хренью~~ c отображением 15 точек для каждого номера и heatmap, а также они сохраняются в [files_heatmap](https://github.com/AnnaVeller/heatmap-location-car-plates/tree/master/files_heatmap "files_heatmap").
 
-###### Наши результаты:
-![Heatmap для разных k](https://sun9-51.userapi.com/JtsdlH3HYkWhJnzDsKmFMA688_Gcy1pfNEPZuQ/nW9JRUeg1Eo.jpg "Heatmap для разных k")
+###### 3) Затем мы поэкспериментируем с k. 
+Поставим k = 60, 40, 30, 20.
+
+##### Наши результаты:
+
+сверху: слева k=60, справа=40,
+
+снизу: слева=30, справа=20
+
+![Heatmap для разных k](https://sun9-51.userapi.com/jZyhvoX7OKzFyEAvVzBkLooWkEnhjjmVgVbslw/E6Ljh87eMfQ.jpg)
 
 
-![](https://sun9-51.userapi.com/Q_gE-4KeRhZQdYfBE8WdQ243A0Kh4Z2Qg3_UtQ/uy2miVzbd1Q.jpg)
+![](https://sun9-51.userapi.com/TVCpLb156oprd0QC4xbYfE97vlnT_NScyqF9ng/MLHLiYes4T0.jpg)
