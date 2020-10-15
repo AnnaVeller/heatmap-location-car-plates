@@ -1,6 +1,4 @@
 import os
-#os.environ['CUDA_VISIBLE_DEVICES'] = '0'   # For GPU inference
-os.environ['CUDA_VISIBLE_DEVICES'] = ''  # For CPU inference
 import warnings
 warnings.filterwarnings('ignore')
 import argparse
@@ -14,7 +12,14 @@ parser = argparse.ArgumentParser(description='tutorial:')
 parser.add_argument('--video', dest='video', default='test_mini2.mp4', help='Videofile or stream url')
 parser.add_argument('--file', dest='filename', default='no', help='File with coordinates of plates')
 parser.add_argument('--type', dest='type', default='v', help='s-stream, v-videofile')
+parser.add_argument('--gpu', dest='gpu', default='no', help='If you use gpu write --gpu=yes')
 args = parser.parse_args()
+
+if args.gpu == 'yes':
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'   # For GPU inference
+    os.environ["TF_FORCE_GPU_ALLOW_GROWTH"]="true"     # For GPU inference
+else:
+    os.environ['CUDA_VISIBLE_DEVICES'] = ''  # For CPU inference
 
 PATH_VIDEO = 'video/'
 name = os.path.splitext(args.video)[0]      # name of video without file extension
