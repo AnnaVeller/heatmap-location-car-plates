@@ -25,6 +25,7 @@ fps = float(fps)
 x = []
 y = []
 line = file.readline()
+count_numbers = 0
 while line:
     [x1, x2, x3, x4, y1, y2, y3, y4] = list(map(lambda x: float(x),  line.split()))
     [y1, y2, y3, y4] = list(map(lambda y: h-y, [y1, y2, y3, y4]))   # because here y begin in left bottom
@@ -53,38 +54,43 @@ while line:
     y14 = (y0 + y5) / 2
     x.extend([x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14])
     y.extend([y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11, y12, y13, y14])
+    count_numbers += 1
     line = file.readline()
+log.debug(' Found %d car numbers' % count_numbers)
 file.close()
 log.debug(' Closed %s' % file_path)
 
 plt.style.use('dark_background')    # 'dark_background', 'ggplot', 'Solarize_Light2'
 
-fig, ax = plt.subplots()
-ax.set_title('15 points of plates\n[%dx%d]' % (w, h))
-plt.scatter(x, y, s=1.5)
-ax.axis('scaled')    # равный масштаб осей
-ax.set_xlim(0, w)
-ax.set_ylim(0, h)
-path_file_15points = PATH + name_video + '_15points'
-plt.savefig(path_file_15points, bbox_inches='tight')
-log.debug(' Draw 15 main plates points and save in in %s' %path_file_15points)
+if count_numbers != 0:
+    fig, ax = plt.subplots()
+    ax.set_title('15 points of plates\n[%dx%d]' % (w, h))
+    plt.scatter(x, y, s=1.5)
+    ax.axis('scaled')    # равный масштаб осей
+    ax.set_xlim(0, w)
+    ax.set_ylim(0, h)
+    path_file_15points = PATH + name_video + '_15points'
+    plt.savefig(path_file_15points, bbox_inches='tight')
+    log.debug(' Draw 15 main plates points and save in in %s' %path_file_15points)
 
-bins = (int(w/k), int(h/k))
-range = ((0, w), (0, h))
+    bins = (int(w/k), int(h/k))
+    range = ((0, w), (0, h))
 
 
-fig, ax = plt.subplots(nrows=1, ncols=1)
-ax.axis('scaled')    # равный масштаб осей
-hist = ax.hist2d(x, y, bins=bins, range=range, norm=mcolors.PowerNorm(0.5))
-ax.set_xlim(0, w)
-ax.set_ylim(0, h)
-plt.colorbar(hist[3])
-ax.grid(color='black', linewidth=0.5, linestyle='--')
-ax.set_title('Heatmap for %s\n%s\n[%dx%d]' % (args.file, str(bins), w, h))
-path_heatmap = PATH + name_video + str(bins)
-plt.savefig(path_heatmap, bbox_inches='tight')
-log.debug(' Draw heatmap and save it in %s' %path_heatmap)
-if args.show:
-    plt.show()
-plt.clf()
-plt.cla()
+    fig, ax = plt.subplots(nrows=1, ncols=1)
+    ax.axis('scaled')    # равный масштаб осей
+    hist = ax.hist2d(x, y, bins=bins, range=range, norm=mcolors.PowerNorm(0.5))
+    ax.set_xlim(0, w)
+    ax.set_ylim(0, h)
+    plt.colorbar(hist[3])
+    ax.grid(color='black', linewidth=0.5, linestyle='--')
+    ax.set_title('Heatmap for %s\n%s\n[%dx%d]' % (args.file, str(bins), w, h))
+    path_heatmap = PATH + name_video + str(bins)
+    plt.savefig(path_heatmap, bbox_inches='tight')
+    log.debug(' Draw heatmap and save it in %s' %path_heatmap)
+    if args.show:
+        plt.show()
+    plt.clf()
+    plt.cla()
+else:
+    log.debug(" We can't draw heatmap by 0 numbers")

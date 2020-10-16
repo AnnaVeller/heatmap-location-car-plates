@@ -26,6 +26,7 @@ def search_number(video, file, type, name_video='test'):
 
     if not cap.isOpened():
         ret = False
+        log.debug(" %s didn't open" % video)
     
     last_cadr_time_video = -SEC_TO_WRITE  # time of last capture cadr on video 
     start_time = time.time()  # time os starting process video/stream

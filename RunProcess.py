@@ -4,6 +4,7 @@ warnings.filterwarnings('ignore')
 import argparse
 import logging.config
 import SearchNumbers
+import sys
 
 logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
 log = logging.getLogger(__name__)
@@ -24,8 +25,11 @@ else:
 if args.type == 'v':
     name = os.path.splitext(args.video)[0]      # name of video without file extension
     PATH_VIDEO = 'video/'+ args.video
+    if not os.path.exists(PATH_VIDEO):
+        log.error(" %s didn't find" % PATH_VIDEO)
+        sys.exit()
 else:
-    name = 'test_stream'
+    name = args.video
     PATH_VIDEO = args.video
 
 if args.filename == 'no':       # if name of file with txt doesn't point - it will be name of video
