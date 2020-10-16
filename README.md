@@ -5,7 +5,8 @@
     2. [Установка под CPU](#2.2)
     3. [Расположение файлов](#2.3)
     4. [Аргументы командной строки](#2.4)
-    5. [Примеры работы](#2.5)
+    5. [Пример работы](#2.5)
+    6. [Пример работы с онлайн камерой](#2.6)
 
 ------------
 
@@ -55,7 +56,7 @@
 
 `--k=40` *Характеристика разбивки на зоны. Желательный интервал [20, 100]. При 20 - большее количество зон, при 100 - зон меньше. По умолчанию указано 40*
 
-### Примеры полученных изображений heatmap <a name='2.5'></a>
+### Пример получения heatmap <a name='2.5'></a>
 
 ###### 1) Запустили [Runprocess.Py](https://github.com/AnnaVeller/heatmap-location-car-plates/blob/master/RunProcess.py "Runprocess.Py") таким образом:
 
@@ -70,18 +71,21 @@
 
 `python3 DrawHeatmap.py --file=multy_mini.txt --k=60 --show=True`
 
-После этого мы видим на экране картинку ~~c какой-то хренью~~ c отображением 15 точек для каждого номера и heatmap, а также они сохраняются в [files_heatmap](https://github.com/AnnaVeller/heatmap-location-car-plates/tree/master/files_heatmap "files_heatmap").
+После этого мы видим на экране картинку ~~c какой-то хренью~~ c отображением 15 точек для каждого номера
 
-###### 3) Затем мы поэкспериментируем с k. 
-Поставим k = 60, 40, 30, 20.
+![Точки номеров](https://sun9-51.userapi.com/TVCpLb156oprd0QC4xbYfE97vlnT_NScyqF9ng/MLHLiYes4T0.jpg)
 
-##### Наши результаты:
 
-сверху: слева k=60, справа=40,
-
-снизу: слева=30, справа=20
+И heatmap. Приведем 4 картинки для разных k
 
 ![Heatmap для разных k](https://sun9-51.userapi.com/jZyhvoX7OKzFyEAvVzBkLooWkEnhjjmVgVbslw/E6Ljh87eMfQ.jpg)
 
+### Использование онлайн камеры в качестве видео <a name='2.6'></a>
 
-![](https://sun9-51.userapi.com/TVCpLb156oprd0QC4xbYfE97vlnT_NScyqF9ng/MLHLiYes4T0.jpg)
+`python3 RunProcess.py --video=[URL на камеру] --file=camera_online.txt --type=s --gpu=no`
+
+Чтобы остановить работу скрипта необходимо нажать Ctrl+c
+
+`python3 DrawHeatmap.py --file=camera_online.txt --k=60 --show=True`
+
+
