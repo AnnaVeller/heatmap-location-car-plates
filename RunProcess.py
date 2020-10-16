@@ -14,6 +14,7 @@ parser.add_argument('--video', dest='video', default='test.mp4', help='Videofile
 parser.add_argument('--file', dest='filename', default='no', help='File with coordinates of plates')
 parser.add_argument('--type', dest='type', default='v', help='s-stream, v-videofile')
 parser.add_argument('--gpu', dest='gpu', default=False, help='If you use gpu write --gpu=True')
+parser.add_argument('--sec', dest='sec', default=0.5, help='Sec between process the cadrs')
 args = parser.parse_args()
 
 if args.gpu:
@@ -38,5 +39,5 @@ else:
     filename = args.filename
 
 log.info(' Run video %s' % args.video)
-SearchNumbers.search_number(PATH_VIDEO, filename, args.type, name)
+SearchNumbers.search_number(PATH_VIDEO, filename, args.type, name, float(args.sec))
 log.info(' Close video %s \n\n' % args.video)

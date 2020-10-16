@@ -7,11 +7,11 @@ logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
 log = logging.getLogger(__name__)
 
 PATH = 'files_heatmap/'
-SEC_TO_WRITE = 0.5   # 0 - process all cadr
 
 
-def search_number(video, file, type, name_video='test'):
+def search_number(video, file, type, name_video, sec):
     
+    SEC_TO_WRITE = sec   # 0 - process all cadr
     path_to_file_txt = PATH + file
     file = open(path_to_file_txt, 'w')      # a - add to file
     log.debug(' Created/opened %s' % path_to_file_txt)
