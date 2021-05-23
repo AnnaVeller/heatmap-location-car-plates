@@ -17,16 +17,16 @@ def search_number(video, file, type, name_video, sec):
     log.debug(' Created/opened %s' % path_to_file_txt)
 
     cap = cv2.VideoCapture(video)
-    h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-    fps = int(cap.get(cv2.CAP_PROP_FPS))
-    file.write('%d %d %s %d \n' % (w, h, name_video, fps))
-    log.debug(' Video [%dx%d]' % (w, h))
-    ret = True
-
-    if not cap.isOpened():
+    if cap.isOpened():
+        h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        fps = int(cap.get(cv2.CAP_PROP_FPS))
+        file.write('%d %d %s %d \n' % (w, h, name_video, fps))
+        log.debug(' Video [%dx%d]' % (w, h))
+        ret = True
+    else:
         ret = False
-        log.debug(" %s didn't open" % video)
+        log.debug(" Unable to read video %s" % video)
     
     last_cadr_time_video = -SEC_TO_WRITE  # time of last capture cadr on video 
     start_time = time.time()  # time os starting process video/stream
