@@ -1,7 +1,8 @@
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
 import argparse
 import logging.config
+
+import matplotlib.colors as mcolors
+import matplotlib.pyplot as plt
 
 logging.config.fileConfig('logging.ini', disable_existing_loggers=True)
 log = logging.getLogger(__name__)

@@ -1,5 +1,6 @@
 import os
 import warnings
+
 warnings.filterwarnings('ignore')
 import argparse
 import logging.config
@@ -18,14 +19,14 @@ parser.add_argument('--sec', dest='sec', default=0.5, help='Sec between process 
 args = parser.parse_args()
 
 if args.gpu:
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'   # For GPU inference
-    os.environ["TF_FORCE_GPU_ALLOW_GROWTH"] = "true"     # For GPU inference
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'  # For GPU inference
+    os.environ["TF_FORCE_GPU_ALLOW_GROWTH"] = "true"  # For GPU inference
 else:
     os.environ['CUDA_VISIBLE_DEVICES'] = ''  # For CPU inference
 
 if args.type == 'v':
-    name = os.path.splitext(args.video)[0]      # name of video without file extension
-    PATH_VIDEO = 'video/'+ args.video
+    name = os.path.splitext(args.video)[0]  # name of video without file extension
+    PATH_VIDEO = 'video/' + args.video
     if not os.path.exists(PATH_VIDEO):
         log.error(" %s didn't find" % PATH_VIDEO)
         sys.exit()
@@ -33,7 +34,7 @@ else:
     name = args.video
     PATH_VIDEO = args.video
 
-if args.filename == 'no':       # if name of file with txt doesn't point - it will be name of video
+if args.filename == 'no':  # if name of file with txt doesn't point - it will be name of video
     filename = name + '.txt'
 else:
     filename = args.filename

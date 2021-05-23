@@ -1,7 +1,8 @@
+import logging.config
 import os
 import sys
+
 from NomeroffNet import filters, RectDetector, Detector
-import logging.config
 
 logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
 log = logging.getLogger('load_model')
@@ -17,7 +18,7 @@ nnet.loadModel('latest')
 rectDetector = RectDetector()
 
 
-def detect_number(img):       # кадр, номер, который должны обнаружить
+def detect_number(img):  # кадр, номер, который должны обнаружить
     NP = nnet.detect([img])
     # Generate image mask.
     cv_img_masks = filters.cv_img_mask(NP)
